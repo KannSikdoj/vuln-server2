@@ -10,30 +10,35 @@ on:
 jobs:
   semgrep:
     runs-on: self-hosted
-    permissions: self-hosted
-
+    permissions:
       id-token: write
       contents: read
       security-events: write
       actions: read
 
     steps:
-      - name: List file 1
+      - name: 🧪 List files 1
         run: ls -la
 
-      - name: List file 1
-        use: actions/checkout@v4
+      - name: 📥 Checkout du code
+        uses: actions/checkout@v4
 
-      - name: List file 2
+      - name: 🧪 List files 2
         run: ls -la
 
-      - name: Setup Pyhton
-        use: actions/setup-python@v5
+      - name: 🧪 check python version
+        run: python3 --version
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Setup Pyhton
-        use: actions/setup-python@v5
-        with:
+      - name: 🧪 check python version
+        run: python3 --version
 
-        run: ls -la
+      - name: 📦 Install semgrep and dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install semgrep
+          semgrep --version
