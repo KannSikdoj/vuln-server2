@@ -27,3 +27,13 @@ jobs:
       - name: List file 2
         run: ls -la
 
+      - name: Setup Pyhton
+        use: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Setup Pyhton
+        use: actions/setup-python@v5
+        with:
+
+        run: ls -la
